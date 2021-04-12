@@ -2,27 +2,11 @@ from django.urls import path
 
 from . import views
 
-"""
-/
-    - show all collections, create new collection
-    
-/collection_id
-    - show all notes of specified collection
-    
-/collection_id/note_id/
-    - show note info
-    
-/collection_id/note/
-    - lets you create new note
-    
-/collection/
-    - lets you create new collection
-"""
-
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:collection_id>/', views.collection, name='collection'),
-    path('<int:collection_id>/<int:note_id>/', views.note, name='note'),
-    path('<int:collection_id>/note/', views.create_note, name='newnote'),
-    path('collection/', views.create_collection, name='newcollection'),
+    path('collection-list/', views.collection_list, name='collection-list'),
+    path('collection-detail/<str:pk>/', views.collection_detail, name='collection-detail'),
+    path('collection-create/', views.collection_create, name='collection-create'),
+    path('collection-update/<str:pk>/', views.collection_update, name='collection-update'),
+    path('collection-delete/<str:pk>/', views.collection_delete, name='collection-delete'),
 ]
